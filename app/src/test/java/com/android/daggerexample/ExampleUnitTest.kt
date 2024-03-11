@@ -1,4 +1,4 @@
-package com.cheezycode.daggerexample
+package com.android.daggerexample
 
 import org.junit.Test
 

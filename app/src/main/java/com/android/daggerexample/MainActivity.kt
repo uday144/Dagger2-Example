@@ -10,7 +10,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val userRegistrationService = UserRegistrationService()
+        val userRepository = UserRepository()
+        val emailService = EmailService()
+
+        val userRegistrationService = UserRegistrationService(userRepository, emailService)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }
 }

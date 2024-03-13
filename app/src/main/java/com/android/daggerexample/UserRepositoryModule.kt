@@ -1,14 +1,12 @@
 package com.android.daggerexample
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
 @Module
-class UserRepositoryModule {
+abstract class UserRepositoryModule {
 
-    @Provides
-    fun getSQLRepository(sqlRepository: SQLRepository): UserRepository {
-        return sqlRepository  // User want sqlRepository and Dagger can create sqlRepository by own (@Inject) so return sqlRepository
-    }
-
+    @Binds // UserRepository binds with sqlRepository ( Dagger can create object if not then use @Provides). All @Binds function are abstract since no object creation required.
+    abstract fun getSQLRepository(sqlRepository: SQLRepository): UserRepository
 }

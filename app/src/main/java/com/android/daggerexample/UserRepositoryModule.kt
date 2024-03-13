@@ -7,8 +7,8 @@ import dagger.Provides
 class UserRepositoryModule {
 
     @Provides
-    fun getFirebaseRepository(): UserRepository {
-        return FirebaseRepository()
+    fun getFirebaseRepository(sqlRepository: SQLRepository): UserRepository {
+        return sqlRepository  // User want sqlRepository and Dagger can create sqlRepository by own (@Inject) so return sqlRepository
     }
 
 }

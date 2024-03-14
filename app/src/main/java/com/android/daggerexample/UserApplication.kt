@@ -8,6 +8,6 @@ class UserApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        userRegistrationComponent = DaggerUserRegistrationComponent.factory().create(4)
+        userRegistrationComponent = DaggerUserRegistrationComponent.factory().create(5)
     }
 }

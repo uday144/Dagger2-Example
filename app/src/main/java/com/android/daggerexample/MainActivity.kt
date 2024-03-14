@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val component = DaggerUserRegistrationComponent.factory().create(4)
+        val component = (application as UserApplication).userRegistrationComponent
 
-        // emailService1, emailService2 will be same on rotation.
         component.inject(this)
+
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }
 }

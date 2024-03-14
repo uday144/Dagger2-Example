@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val component = (application as UserApplication).userRegistrationComponent
+        val appComponent = (application as UserApplication).appComponent
 
-        component.inject(this)
-
+        val userRegistrationComponent = DaggerUserRegistrationComponent.factory().create(7, appComponent)
+        userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }
 }

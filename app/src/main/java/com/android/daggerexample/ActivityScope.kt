@@ -8,4 +8,4 @@ import javax.inject.Scope
 @Scope
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-annotation class ApplicationScope()
+annotation class ActivityScope()

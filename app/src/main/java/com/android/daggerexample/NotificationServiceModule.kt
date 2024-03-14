@@ -8,7 +8,7 @@ import javax.inject.Singleton
 @Module
 class NotificationServiceModule() {
 
-    @ApplicationScope  // whenever use @Provides and need singleton obj then use @Singleton
+    @ActivityScope  // whenever use @Provides and need singleton obj then use @Singleton
     @MessageQualifier
     @Provides
     fun getMessageService(retryCount: Int) : NotificationService{

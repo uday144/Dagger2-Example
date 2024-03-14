@@ -9,8 +9,6 @@ import javax.inject.Singleton
 interface UserRegistrationComponent {
     fun inject(mainActivity: MainActivity) // function name doesn't matter - pass the consumer. Provided object in the consumer where @Inject on field
 
-    fun getEmailService() : EmailService
-
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance retryCount: Int): UserRegistrationComponent

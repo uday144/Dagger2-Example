@@ -9,8 +9,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userRegistrationService: UserRegistrationService  // Field injection
 
-
+    @Inject
     lateinit var emailService1: EmailService
+    @Inject
     lateinit var emailService2: EmailService
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,16 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val component = DaggerUserRegistrationComponent.factory().create(4)
 
-        // Boundary is component - within component they are singleton
-        emailService1 = component.getEmailService()
-        emailService2 = component.getEmailService()
-
-        // different object here
-        val component2 = DaggerUserRegistrationComponent.factory().create(4)
-
-        emailService1 = component2.getEmailService()
-        emailService2 = component2.getEmailService()
-
+        // emailService1, emailService2 will be same on rotation.
         component.inject(this)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }

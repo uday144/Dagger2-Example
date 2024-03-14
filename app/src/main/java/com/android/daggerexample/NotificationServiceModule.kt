@@ -11,8 +11,8 @@ class NotificationServiceModule() {
     @ActivityScope  // whenever use @Provides and need singleton obj then use @Singleton
     @MessageQualifier
     @Provides
-    fun getMessageService() : NotificationService{
-        return MessageService(10)
+    fun getMessageService(retryCount: Int) : NotificationService{
+        return MessageService(retryCount)
     }
 
     @Named("email")

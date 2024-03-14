@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var emailService1: EmailService
 
     @Inject
-    lateinit var emailService2: EmailService
+    lateinit var emailService2: EmailService // These obj are not singleton for app level. Only for activity. Rotate activity recreate - oncreate() -> component recreate -> new obj ref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

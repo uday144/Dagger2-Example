@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val appComponent = (application as UserApplication).appComponent
 
-        val userRegistrationComponent = appComponent.getUserRegistrationComponentFactory().create(9)
+        val userRegistrationComponent = appComponent.getUserRegistrationComponent()
         userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }

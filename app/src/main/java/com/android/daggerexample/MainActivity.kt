@@ -19,10 +19,11 @@ class MainActivity : AppCompatActivity() {
 
         val component = DaggerUserRegistrationComponent.factory().create(4)
 
+        // Boundary is component - within component they are singleton
         emailService1 = component.getEmailService()
         emailService2 = component.getEmailService()
 
-
+        // different object here
         val component2 = DaggerUserRegistrationComponent.factory().create(4)
 
         emailService1 = component2.getEmailService()

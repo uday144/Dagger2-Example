@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var emailService1: EmailService
+
     @Inject
     lateinit var emailService2: EmailService
 
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         val appComponent = (application as UserApplication).appComponent
 
-        val userRegistrationComponent = appComponent.getUserRegistrationComponentBuilder().retryCount(12).build()
+        val userRegistrationComponent = DaggerUserRegistrationComponent.builder()
+            .appComponent(appComponent)
+            .retryCount(15)
+            .build()
+
         userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }

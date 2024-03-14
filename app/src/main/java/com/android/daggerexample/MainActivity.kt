@@ -10,17 +10,24 @@ class MainActivity : AppCompatActivity() {
     lateinit var userRegistrationService: UserRegistrationService  // Field injection
 
 
-    @Inject
     lateinit var emailService1: EmailService
-
-    @Inject
-    lateinit var emailService2: EmailService // These obj are not singleton for app level. Only for activity. Rotate activity recreate - oncreate() -> component recreate -> new obj ref
+    lateinit var emailService2: EmailService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val component = DaggerUserRegistrationComponent.factory().create(4)
+
+        emailService1 = component.getEmailService()
+        emailService2 = component.getEmailService()
+
+
+        val component2 = DaggerUserRegistrationComponent.factory().create(4)
+
+        emailService1 = component2.getEmailService()
+        emailService2 = component2.getEmailService()
+
         component.inject(this)
         userRegistrationService.registerUser("uday144@gmail.com", "11111")
     }

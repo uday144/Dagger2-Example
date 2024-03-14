@@ -3,10 +3,12 @@ package com.android.daggerexample
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class NotificationServiceModule() {
 
+    @Singleton  // whenever use @Provides and need singleton obj then use @Singleton
     @MessageQualifier
     @Provides
     fun getMessageService(retryCount: Int) : NotificationService{
